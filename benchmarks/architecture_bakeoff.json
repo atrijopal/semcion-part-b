@@ -1,0 +1,33 @@
+{
+  "evaluation_budget_minutes_each": 25,
+  "validation_samples": 477,
+  "selected_architecture": "nafnet_full",
+  "selection_basis": "Leads on all three quality metrics (PSNR, SSIM, LPIPS) and on measured inference latency, both in eager mode and with torch.compile applied.",
+  "candidates": {
+    "nafnet_full": {
+      "params": 29068864,
+      "initialization": "pretrained (NAFNet-SIDD-width32)",
+      "epochs_completed": 45,
+      "psnr_mean": 23.281041745637555,
+      "ssim_mean": 0.610585285545315,
+      "lpips_mean": 0.22154274281403305,
+      "inference_ms_eager": 16.274366238831973,
+      "inference_ms_compiled": 2.68
+    },
+    "swinir_lite": {
+      "params": 1032841,
+      "initialization": "random (no pretrained checkpoint available for this architecture)",
+      "epochs_completed": 28,
+      "psnr_mean": 21.868982455456006,
+      "ssim_mean": 0.5729631048748545,
+      "lpips_mean": 0.32785766348398954,
+      "inference_ms_eager": 61.2478901005391,
+      "inference_ms_compiled": 38.83
+    }
+  },
+  "notes": [
+    "SwinIR-lite trained from random initialization (no pretrained checkpoint exists for this architecture), while NAFNet used pretrained initialization.",
+    "Both candidates were evaluated at a fixed 25-minute budget; neither had fully converged at cutoff.",
+    "SwinIR-lite's inference latency was profiled and confirmed to be an architectural property of window-attention at this configuration, not an implementation inefficiency; the latency gap persists after torch.compile optimization."
+  ]
+}

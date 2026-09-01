@@ -1,0 +1,16 @@
+{
+  "n_samples": 477,
+  "psnr_mean": 23.52556356665125,
+  "psnr_std": 3.668854918575197,
+  "ssim_mean": 0.6217391074929934,
+  "ssim_std": 0.1544200864525695,
+  "infer_ms_mean": 18.19893199192903,
+  "infer_ms_std": 8.209679770622794,
+  "lpips_mean": 0.14286426774204652,
+  "lpips_std": 0.05260401821213672,
+  "arch": "nafnet_full",
+  "checkpoint": "runs/main_run_6h/best.pth",
+  "n_params": 29068864,
+  "ckpt_epoch": 583,
+  "ckpt_elapsed_sec": 16600.491401910782
+}
