@@ -11,8 +11,8 @@ evaluated.
 ```
 SUBMISSION/
 ├── README.md             this file
-├── evaluate.py           required component 1 -- evaluation script
-├── model.py              model architecture (imported by evaluate.py)
+├── run.py                required component 1 -- evaluation script
+├── model.py              model architecture (imported by run.py)
 ├── weights/
 │   └── model_best.pth    trained checkpoint (29.07M params)
 ├── training/             required component 2 -- training script
@@ -27,7 +27,7 @@ SUBMISSION/
 ## 1. Evaluation script
 
 ```
-python evaluate.py <input_dir> <output_dir>
+python run.py <input_dir> <output_dir>
 ```
 
 Standalone, non-notebook script. No manual edits required — model
@@ -53,7 +53,7 @@ checkpoint are bundled directly.
 
 ## 3. Denoised test outputs
 
-`outputs/` — this submission's `evaluate.py`, run against the provided
+`outputs/` — this submission's `run.py`, run against the provided
 `Test_NoisyLR` set (400 images, no ground truth), output as-is.
 
 ## 4. Environment specification

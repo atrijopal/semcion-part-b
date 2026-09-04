@@ -59,7 +59,7 @@ python evaluate.py --checkpoint runs/my_run/best.pth --arch nafnet_full
 Computes overall PSNR/SSIM/LPIPS and measured (GPU-warmed-up) inference time
 on the manifest's held-out validation split. This is the internal
 metrics/validation script (used throughout development against a
-ground-truth-bearing validation split) — distinct from `../evaluate.py`,
+ground-truth-bearing validation split) — distinct from `../run.py`,
 the submission's required inference-only script, which has no metrics
 computation since the actual competition test set has no ground truth.
 

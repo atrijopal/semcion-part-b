@@ -3,7 +3,7 @@ Standalone model definition for the submitted checkpoint -- NAFNet-full
 (29.07M params), additive-residual joint denoise + 2x super-resolution.
 
 Deliberately self-contained (torch only, no external repo/package
-dependency) so evaluate.py has zero non-trivial setup, per the submission
+dependency) so run.py has zero non-trivial setup, per the submission
 requirement that the evaluation script "must run without manual edits."
 The NAFBlock / LayerNorm2d building blocks below are extracted, unmodified,
 from the official megvii-research/NAFNet repository (Chen et al., "Simple
@@ -147,7 +147,7 @@ class NAFNetRestoration(nn.Module):
     def forward(self, bicubic, nlr=None):
         """bicubic: (N,1,H,W) bicubic-upsampled input -- the residual-add baseline.
         `nlr` accepted-but-unused for a uniform call signature with the SwinIR
-        bake-off candidate (which needs it); evaluate.py never passes it."""
+        bake-off candidate (which needs it); run.py never passes it."""
         _, _, H, W = bicubic.shape
         x = self.check_image_size(bicubic)
         x = self.intro(x)

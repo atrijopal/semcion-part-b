@@ -5,7 +5,7 @@ AI-Based Restoration of Degraded Images (joint denoising + 2x super-
 resolution, SEM images).
 
 Usage:
-    python evaluate.py <input_dir> <output_dir>
+    python run.py <input_dir> <output_dir>
 
 <input_dir>  : directory of degraded input images, one .npy file per image
                (single-channel float32 array, any H x W -- the model
@@ -73,7 +73,7 @@ def main():
     os.makedirs(args.output_dir, exist_ok=True)
     input_files = sorted(f for f in os.listdir(args.input_dir) if f.endswith(".npy"))
     if not input_files:
-        print(f"[evaluate] WARNING: no .npy files found in {args.input_dir}", file=sys.stderr)
+        print(f"[run] WARNING: no .npy files found in {args.input_dir}", file=sys.stderr)
 
     n_written = 0
     with torch.no_grad():
@@ -90,12 +90,12 @@ def main():
 
     t_end = time.time()
 
-    print(f"[evaluate] device={device}")
-    print(f"[evaluate] model init: {t_model_ready - t_start:.3f}s")
-    print(f"[evaluate] inference + I/O for {n_written} images: {t_end - t_model_ready:.3f}s "
+    print(f"[run] device={device}")
+    print(f"[run] model init: {t_model_ready - t_start:.3f}s")
+    print(f"[run] inference + I/O for {n_written} images: {t_end - t_model_ready:.3f}s "
           f"({(t_end - t_model_ready) / max(1, n_written) * 1000:.2f} ms/image)")
-    print(f"[evaluate] total wall-clock: {t_end - t_start:.3f}s")
-    print(f"[evaluate] wrote {n_written} restored images to {args.output_dir}")
+    print(f"[run] total wall-clock: {t_end - t_start:.3f}s")
+    print(f"[run] wrote {n_written} restored images to {args.output_dir}")
 
 
 if __name__ == "__main__":
